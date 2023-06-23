@@ -1,5 +1,7 @@
 <?php
 
+/* Aqui criamos o método para incluir as rotas que serão acessíveis apenas para a empresa 'pai' */
+
 namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -46,7 +48,7 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
-        //
+        $this->mapTenantRoutes();
     }
 
     /**
@@ -61,6 +63,21 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware('web')
              ->namespace($this->namespace)
              ->group(base_path('routes/web.php'));
+    }
+    
+    /**
+     * Define the "web" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapTenantRoutes()
+    {
+        Route::prefix('tenants')
+             ->middleware('web', 'check.domain.main')
+             ->namespace($this->namespace)
+             ->group(base_path('routes/tenant.php'));
     }
 
     /**

@@ -15,5 +15,10 @@ class ManagerTenant{
         
         Schema::connection('tenant')->getConnection()->reconnect();
     }
+
+    /* função usada para verificar se o dominio atual é igual ao dominio principal para não atribuir a conexão no middleware */
+    public function domainIsMain(){
+        return (request()->getHost() == config('tenant.domain_main'));
+    }
 }
 ?>
