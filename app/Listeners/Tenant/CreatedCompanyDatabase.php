@@ -2,7 +2,7 @@
 
 namespace App\Listeners\Tenant;
 
-use App\Events\CompanyCreated;
+use App\Events\Tenant\CompanyCreated;
 use App\Events\Tenant\DatabaseCreated;
 use App\Tenant\Database\DatabaseManager;
 use Illuminate\Contracts\Queue\ShouldQueue;

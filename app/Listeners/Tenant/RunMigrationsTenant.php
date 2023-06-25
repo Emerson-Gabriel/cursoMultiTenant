@@ -29,6 +29,8 @@ class RunMigrationsTenant
     {
         $company = $event->company();
 
+        info('$company->id: ' . $company->id);
+
         /* rodando as migrates aqui */
         $migration = Artisan::call('tenants:migrate', [
             'id' => $company->id,
