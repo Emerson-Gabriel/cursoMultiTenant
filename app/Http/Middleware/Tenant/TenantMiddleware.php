@@ -21,7 +21,10 @@ class TenantMiddleware
     public function handle($request, Closure $next)
     {
         $manager = app(ManagerTenant::class);
-
+        /* se o dominio é o principal então já segue com a requisição */
+        if ($manager->domainIsMain())
+            return $next($request);
+            
         $tenant = $this->getCompany($request->getHost());
         
         if (!$tenant && $request->url() != route('404.tenant')) {

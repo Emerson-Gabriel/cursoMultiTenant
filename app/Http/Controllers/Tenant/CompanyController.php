@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Tenant;
 
+use App\Events\CompanyCreated;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
 use Illuminate\Http\Request;
@@ -27,6 +28,8 @@ class CompanyController extends Controller
             'db_user' => 'root',
             'db_pass' => $random,
         ]);
+
+        event(new CompanyCreated($company));
 
         dd($company);
     }
