@@ -24,3 +24,6 @@ Route::get('/erro404', 'RedirectBadController@falha')->name('404.tenant');
 Route::get('/teste', function () {
     return 'Página teste.';
 })->name('teste');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
