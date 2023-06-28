@@ -34,8 +34,14 @@ class RunMigrationsTenant
         /* rodando as migrates aqui */
         $migration = Artisan::call('tenants:migrate', [
             'id' => $company->id,
-             
         ]);
+
+        /* agora iremos rodar as seeders */
+        if ($migration == 0) {
+            Artisan::call('db:seed', [
+                '--class' => 'TenantsTableSeeder'
+            ]);
+        }
 
         return $migration === 0;
     }

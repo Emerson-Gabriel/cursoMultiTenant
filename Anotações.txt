@@ -1,0 +1,16 @@
+Anotações video aulas tenants:
+
+A intenção do projeto da video aula era criar um subdominio para cada empresa.
+O domínio da empresa main (principal) é o curso.tenant (criei uma virtual host para testar) 
+	> para o uso conforme apresentado na vídeo aula eu teria que criar um subdominio para cada empresa
+Foi criado um arquivo de rotas e um middlaware atribuindo o prefixo tenants para todas as rotas das empresas
+Referente à ação de criação do banco e das tabelas referente aos bancos:
+	Basicamente foram criados os listers e os eventos (criação de banco e criação das tabelas)
+	Como eles ficaram separados é possível apenas criar o banco ou apenas executar as migrates em um banco já criado.
+A parte de CRUD das empresas não fiz pois não tenho duvida nessa parte, apenas assisti a video aula.
+A aplicação do curso também tem algumas peculiaridades como por exemplo visualizar algumas ações apenas usuários administrador.
+Na sygma a arquitetura que usamos é um pouco diferente, pois não usamos subdomínio. 
+	Apenas um domínio principal, mas a logica de criação das tabelas e bancos é a mesma.
+Uma funcionalidade nova que achei interessante e que eu não sabia é de incluir novas diretivas de uso no blade  (como se fosse o @if)
+Foi criado tambem o seed para ser executado para os tenants.
+A parte de session também foi bem tranquila.
